@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+.ladoDireito{
+    background-color: white;
+    width: 50vw;
+    height: 100vh;
+}
+
+.ladoEsquerdo{
+    background-image: url('assets/images/backgroundClear.png');
+    margin-left: 4000%;
+    
+}
