@@ -22,7 +22,7 @@ const LoginPage = () => {
     }
 
     return (
-        <div>
+        <div className='login-page-container'>
             <div className='ladoDireito'>
                 <div className='container-flex'>
                     <div className='login'>
@@ -63,7 +63,7 @@ const LoginPage = () => {
                 </div>
             </div>
             <div className='ladoEsquerdo'>
-                <h2>E</h2>
+                <img className='imgbkgrd' src={backgroundClear}/>
             </div>
         </div>
     );
