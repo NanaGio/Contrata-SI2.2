@@ -28,6 +28,7 @@ const LoginPage = () => {
                     <div className='login'>
                         <img src={logoPreto}/>
                         <h2 className="login-title">Acessar conta</h2>
+                        <h3 className='cadastro'>Ou cadastre-se </h3>
                         <form onSubmit={handLoginSubmit} className="login-form">
 
                             <div className='form-group'>
