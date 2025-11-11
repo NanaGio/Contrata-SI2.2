@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'; // Impor
 import './index.css';
 
 // Importe suas páginas
+import CadastroPage from './pages/CadastroPage.jsx'
 import LoginPage from './pages/LoginPage.jsx';
 import MainPage from './pages/MainPage.jsx';
 // O import do App.jsx não é necessário aqui, pode remover se quiser
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
     path: "/login",
     element: <LoginPage />,
   },
+  {
+    path: "/Cadastro",
+    element: <CadastroPage />,
+  }
 ]);
 
 // Use a variável ReactDOM que você importou
