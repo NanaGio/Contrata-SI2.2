@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     element: <LoginPage />,
   },
   {
-    path: "/Cadastro",
+    path: "/cadastro",
     element: <CadastroPage />,
   }
 ]);
