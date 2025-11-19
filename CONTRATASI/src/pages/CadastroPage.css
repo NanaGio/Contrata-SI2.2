@@ -1,94 +1,200 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
 
-body {
-  font-family: 'Montserrat', sans-serif;
-  margin: 0;
-  background-color: #f0f2f5; /* Um cinza claro para o fundo */
-}
-
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* --- Container da Página (Centraliza o card) --- */
-.cadastro-page-container {
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fbfbfb;
+}
+
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 2rem; /* Espaçamento caso a tela seja pequena */
-  margin-left: 150%;
+  padding: 20px;
 }
 
-/* --- O Card Branco Principal --- */
-.container-flex {
-  background-color: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  padding: 2.5rem 3rem;
-  max-width: 450px;
+.card {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
   width: 100%;
+  max-width: 450px;
   text-align: center;
-  margin-left: 300%;
+  margin-left: 500px;
 }
 
-/* --- Cabeçalho (Logo e Títulos) --- */
-.form-header {
-  margin-bottom: 2rem;
+.logo-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  margin-bottom: 10px; 
+  width: 100%;
 }
 
-/* Placeholder para sua logo */
-.logo-placeholder {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+.logo-img {
+  width: 180px; 
+  height: auto;
+  object-fit: contain;
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  color: #000;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.header h2 {
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+.toggle-container {
+  display: flex;
+  background-color: #dcdcdc;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  padding: 0;
+}
+
+.toggle-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 1rem;
-  font-size: 0.8rem;
-  color: #28a745;
-  font-weight: bold;
-}
-
-.form-header h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #333;
-  margin: 0 0 0.25rem 0;
-}
-
-.form-header h2 {
-  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
   color: #555;
-  font-weight: 500;
-  margin: 0;
+  background-color: transparent;
 }
 
-/* --- Abas (Profissional / Empresa) --- */
-.tabs-container {
-  display: flex;
-  margin-bottom: 2rem;
-  border-radius: 8px;
-  overflow: hidden; /* Garante que o radius funcione nos botões */
-  background-color: #f0f0f0;
-}
-
-.tab {
-  flex: 1; /* Divide o espaço igualmente */
-  padding: 12px;
-  border: none;
-  background-color: transparent; /* O container dá a cor inativa */
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #777;
-  transition: all 0.2s ease;
-}
-
-.tab.active {
-  background-color: #28a745; /* Verde principal */
+.toggle-btn.active {
+  background-color: #109159;
   color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+.form-content {
+  text-align: left;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #109159;
+  border-radius: 20px;
+  outline: none;
+  font-size: 1rem;
+  color: #333;
+}
+
+.input-group input:focus {
+  box-shadow: 0 0 0 2px rgba(16, 145, 89, 0.2);
+}
+
+.password-wrapper {
+  position: relative; 
+  width: 100%;
+  display: flex;   
+  align-items: center;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 15px;       
+  
+  top: 60%;           
+  transform: translateY(-50%); 
+  
+  cursor: pointer;
+  color: #666;       
+  display: flex;      
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;  
+  z-index: 10;       
+}
+
+.file-group {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 25px;
+  font-size: 0.85rem;
+}
+
+.file-group label:first-child {
+  margin-right: 10px;
+  font-weight: 600;
+  font-style: italic;
+  color: #333;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #109159;
+  background-color: #d4f0e3;
+  color: #555;
+  padding: 5px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background 0.2s;
+}
+
+.custom-file-upload:hover {
+  background-color: #bdfadd;
+}
+
+.file-name {
+  margin-left: 10px;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #109159;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s;
+  text-transform: uppercase;
+}
+
+.submit-btn:hover {
+  background-color: #0c7044;
+}
