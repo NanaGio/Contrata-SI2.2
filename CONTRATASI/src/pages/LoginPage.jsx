@@ -3,22 +3,42 @@ import logoPreto from '../assets/images/logoPreto.png';
 import backgroundClear from '../assets/images/backgroundClear.png';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const LoginPage = () => {
-    const [email, setEmail] = useState('');
+    const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [passwordShown, setPasswordShown] = useState(false);
+    const [error, setError] = useState('');
+
     const togglePasswordVisibility = () => {
         setPasswordShown(!passwordShown);
     }
 
-    const handLoginSubmit = (event) => {
+    const handLoginSubmit = async (event) => {
         event.preventDefault();
-        console.log("Enviando para o back-end (simulado):");
-        console.log("Email:", email);
-        console.log("Senha:", password)
+        setError('');
 
-        alert(`Login simulado: ${email}`)
+        try{
+            const response = await axios.post('http://localhost:8080/api/auth/login', {
+                username: login, 
+                password: password
+            });
+
+            console.log("Login bem-sucedido!");
+            console.log("Token:", response.data.token);
+
+            localStorage.setItem('authToken', response.data.token);
+            
+            alert(`Login bem-sucedido!`);
+        } catch (err) {
+            console.error("Erro no login:", err);
+            if (err.response && (err.response.status === 401 || err.response.status === 403)) {
+                setError("Login ou senha inválidos. Tente novamente.");
+            } else {
+                setError("Não foi possível conectar ao servidor. Tente novamente mais tarde.");
+            }
+        }
     }
 
     return (
@@ -32,12 +52,12 @@ const LoginPage = () => {
                         <form onSubmit={handLoginSubmit} className="login-form">
 
                             <div className='form-group'>
-                                <label htmlFor="email">Email *</label>
+                                <label htmlFor="login">Login *</label>
                                 <input
                                     type="email"
-                                    id="email"
-                                    placeholder="seuemail@exemplo.com"
-                                    value={email}
+                                    id="login"
+                                    placeholder="Username"
+                                    value={login}
                                     onChange={(e) => setEmail(e.target.value)}
                                     required
                                 />

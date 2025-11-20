@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FaUser, FaBuilding, FaEye, FaEyeSlash } from 'react-icons/fa';
 import './CadastroPage.css';
 import logoPreto from '../assets/images/logoPreto.png';
+import axios from 'axios'; 
 
 const Cadastro = () => {
   const [tipoConta, setTipoConta] = useState('profissional'); 
@@ -13,6 +14,8 @@ const Cadastro = () => {
     senha: '',
     arquivo: null
   });
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(''); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,10 +26,41 @@ const Cadastro = () => {
     setFormData({ ...formData, arquivo: e.target.files[0] });
   };
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Dados enviados:', { ...formData, tipoConta });
-  };
+    setError('');
+    setSuccess('');
+
+    const usuarioParaEnviar = {
+        nome: formData.nome,
+        email: formData.email,
+        telefone: formData.telefone,
+        senha: formData.senha,
+        perfilNome: tipoConta === 'profissional' ? 'Profissional' : 'Empresa' 
+    };
+
+    try {
+    
+        await axios.post('http://localhost:8080/api/usuarios', usuarioParaEnviar);
+        
+        setSuccess('Cadastro realizado com sucesso! Você já pode fazer o login.');
+        
+        setFormData({ nome: '', email: '', telefone: '', senha: '', arquivo: null });
+
+        if (tipoConta === 'profissional' && formData.arquivo) {
+            console.log("Próximo passo: Fazer upload do arquivo:", formData.arquivo.name);
+        }
+
+    } catch (err) {
+        console.error('Erro no cadastro:', err);
+        if (err.response && err.response.data) {
+            setError(err.response.data.message || 'Ocorreu um erro ao tentar cadastrar.');
+        } else {
+            setError('Não foi possível conectar ao servidor. Tente novamente mais tarde.');
+        }
+    }
+  }
 
   return (
     <div className="container">
