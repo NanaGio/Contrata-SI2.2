@@ -1,0 +1,128 @@
+/* src/components/Navbar.css */
+
+:root {
+  --nav-green: #108f56;       /* Verde do botão */
+  --nav-green-hover: #0d7a48;
+  --avatar-bg: #b3e0cc;       /* Verde claro do avatar */
+  --avatar-text: #106e45;     /* Verde escuro da letra P */
+  --text-black: #000000;
+  --gray-icon: #4b5563;
+}
+
+.navbar-container {
+  width: 100%;
+  height: 90px; /* Altura fixa para ficar robusto como na imagem */
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0 50px; /* Espaçamento lateral */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+  box-sizing: border-box;
+}
+
+/* --- LADO ESQUERDO --- */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--text-black);
+  letter-spacing: -0.5px;
+}
+
+/* --- LADO DIREITO --- */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 30px; /* Espaço entre botão, sino e avatar */
+}
+
+/* Botão Vagas */
+.btn-vagas {
+  background-color: var(--nav-green);
+  color: white;
+  border: none;
+  border-radius: 8px; /* Cantos arredondados suaves */
+  padding: 10px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-vagas:hover {
+  background-color: var(--nav-green-hover);
+}
+
+/* Sino de Notificação */
+.notification-wrapper {
+  position: relative;
+  cursor: pointer;
+  color: var(--gray-icon);
+  display: flex;
+  align-items: center;
+}
+
+.notification-wrapper:hover {
+  color: var(--nav-green);
+}
+
+.notification-dot {
+  position: absolute;
+  top: 0;
+  right: 2px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--nav-green);
+  border-radius: 50%;
+  border: 2px solid white; /* Borda branca para destacar do ícone */
+}
+
+/* Avatar do Usuário */
+.user-avatar {
+  width: 50px;
+  height: 50px;
+  background-color: var(--avatar-bg);
+  color: var(--avatar-text);
+  border-radius: 50%; /* Círculo perfeito */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.user-avatar:hover {
+  background-color: #a1d4bd;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 20px;
+    height: 70px;
+  }
+  .nav-title {
+    display: none; /* Esconde o nome em celulares se precisar */
+  }
+  .btn-vagas span {
+    display: none; /* Esconde texto 'Vagas' em telas muito pequenas */
+  }
+}

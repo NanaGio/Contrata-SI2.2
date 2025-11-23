@@ -1,63 +1,84 @@
+import React, {useState} from 'react';
 import { Filter, Search, Trash2 } from 'lucide-react';
 import JobCard from '../components/JobCard';
 import Navbar from '../components/Navbar';
+import Sidebar from '../components/SideBar'; // Importe a Sidebar
+
+// Importando o arquivo CSS tradicional
+import './VagasPage.css';
 
 const VagasPage = () => {
-  return (
-    <div className="min-h-screen bg-[#F8F9FA]"> {/* Fundo cinza bem clarinho */}
-      <Navbar />
+  // Estado para controlar se a sidebar está visível
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-      <main className="max-w-[1400px] mx-auto px-6 py-10">
+  // Funções para abrir e fechar
+  const handleOpenSidebar = () => setIsSidebarOpen(true);
+  const handleCloseSidebar = () => setIsSidebarOpen(false);
+
+  return (
+    <div className="vagas-container">
+      
+      {/* Passamos a função de abrir para a Navbar */}
+      <Navbar onOpenProfile={handleOpenSidebar} />
+
+      {/* Componente Sidebar (fica "escondido" até o estado mudar) */}
+      <Sidebar isOpen={isSidebarOpen} onClose={handleCloseSidebar} />
+      <main className="vagas-main">
         
-        {/* --- ÁREA DE BUSCA E FILTROS (Centralizada) --- */}
-        <div className="max-w-5xl mx-auto mb-12">
+        {/* --- SEÇÃO DE BUSCA E FILTROS --- */}
+        <div className="search-section">
           
-          {/* 1. Linha de Busca */}
-          <div className="mb-6">
-            <label className="block text-sm font-bold text-gray-800 mb-2 ml-1">Buscar:</label>
-            <div className="relative shadow-sm">
+          {/* Linha de Busca */}
+          <div className="search-row">
+            <label className="input-label">Buscar:</label>
+            <div className="search-wrapper">
               <input 
                 type="text" 
-                className="w-full border border-emerald-500 rounded-2xl py-3 pl-5 pr-12 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white"
+                className="search-input"
               />
-              <Search className="absolute right-4 top-3.5 text-emerald-600" size={20} />
+              <Search size={20} className="search-icon" />
             </div>
           </div>
 
-          {/* 2. Linha de Filtros (Grid para alinhar inputs e botões) */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
+          {/* Linha de Filtros e Botões */}
+          <div className="filters-row">
             
-            {/* Select Empresa (Ocupa 4 colunas) */}
-            <div className="md:col-span-4">
-              <label className="block text-sm font-bold text-gray-800 mb-2 ml-1">Empresa:</label>
-              <select className="w-full border border-emerald-500 rounded-lg h-[45px] px-3 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            {/* Select Empresa */}
+            <div className="filter-group">
+              <label className="input-label">Empresa:</label>
+              <select className="filter-select">
                 <option value="">Selecione...</option>
+                <option value="pipipi">Pipipi Popo LTDA</option>
               </select>
             </div>
 
-            {/* Select Competência (Ocupa 4 colunas) */}
-            <div className="md:col-span-4">
-              <label className="block text-sm font-bold text-gray-800 mb-2 ml-1">Competência:</label>
-              <select className="w-full border border-emerald-500 rounded-lg h-[45px] px-3 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            {/* Select Competência */}
+            <div className="filter-group">
+              <label className="input-label">Competência:</label>
+              <select className="filter-select">
                  <option value="">Selecione...</option>
+                 <option value="react">React</option>
+                 <option value="java">Java</option>
               </select>
             </div>
 
-            {/* Botões (Ocupam 4 colunas divididas entre eles) */}
-            <div className="md:col-span-4 flex gap-3">
-              <button className="flex-1 bg-[#2E8B57] hover:bg-[#246d44] text-white rounded-lg h-[45px] flex items-center justify-center gap-2 font-semibold transition shadow-sm text-sm">
-                <Filter size={16} /> Filtrar
+            {/* Botões de Ação */}
+            <div className="actions-group">
+              <button className="btn btn-filter">
+                <Filter size={18} /> Filtrar
               </button>
 
-              <button className="flex-1 bg-[#2E8B57] hover:bg-[#246d44] text-white rounded-lg h-[45px] flex items-center justify-center gap-2 font-semibold transition shadow-sm text-sm">
-                 <Trash2 size={16} /> Limpar
+              <button className="btn btn-clear">
+                 <Trash2 size={18} /> Limpar
               </button>
             </div>
+
           </div>
         </div>
 
-        {/* --- GRADE DE VAGAS --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {/* --- GRID DE VAGAS --- */}
+        <div className="cards-grid">
+          {/* Gerando 12 cards para visualização */}
           {Array.from({ length: 12 }).map((_, index) => (
             <JobCard key={index} />
           ))}
@@ -65,6 +86,8 @@ const VagasPage = () => {
 
       </main>
     </div>
+
+    
   );
 };
 

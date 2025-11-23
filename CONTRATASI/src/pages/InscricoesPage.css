@@ -1,0 +1,58 @@
+/* src/pages/InscricoesPage.css */
+
+:root {
+  --bg-color: #f9fafb;
+  --text-dark: #111827;
+}
+
+.inscricoes-container {
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  font-family: sans-serif; /* Ou sua fonte Montserrat */
+}
+
+.inscricoes-main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 30px;
+}
+
+/* --- TÍTULO --- */
+.page-title {
+  text-align: center;
+  font-size: 2.5rem; /* Tamanho grande */
+  font-weight: 800;  /* Bem negrito */
+  color: var(--text-dark);
+  margin-top: 20px;
+  margin-bottom: 60px; /* Espaço grande entre título e cards */
+}
+
+/* --- GRID DE VAGAS (Mesmo estilo da outra página) --- */
+.cards-grid {
+  display: grid;
+  /* 4 colunas em telas grandes */
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 25px;
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .page-title {
+    font-size: 2rem;
+  }
+}

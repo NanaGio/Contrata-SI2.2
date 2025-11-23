@@ -8,6 +8,7 @@ import CadastroPage from './pages/CadastroPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import MainPage from './pages/MainPage.jsx';
 import VagasPage from './pages/VagasPage.jsx';
+import InscricoesPage from './pages/InscricoesPage.jsx';
 
 
 const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
   {
   path: "/vagas",
   element: <VagasPage />,
+  },
+  {
+    path: "/inscricoes",
+    element: <InscricoesPage />,
   },
 ]);
 
