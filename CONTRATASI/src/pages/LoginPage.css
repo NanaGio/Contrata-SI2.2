@@ -16,7 +16,12 @@ body {
   height: 100vh; 
 }
 
-
+.cadastro{
+  hover{
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
 .ladoDireito{
   flex: 1;
   background-color: white;
