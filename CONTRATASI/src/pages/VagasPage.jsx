@@ -1,93 +1,112 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Filter, Search, Trash2 } from 'lucide-react';
 import JobCard from '../components/JobCard';
 import Navbar from '../components/Navbar';
-import Sidebar from '../components/SideBar'; // Importe a Sidebar
-
-// Importando o arquivo CSS tradicional
+import Sidebar from '../components/Sidebar';
 import './VagasPage.css';
 
 const VagasPage = () => {
-  // Estado para controlar se a sidebar está visível
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  // Funções para abrir e fechar
   const handleOpenSidebar = () => setIsSidebarOpen(true);
   const handleCloseSidebar = () => setIsSidebarOpen(false);
 
+  // --- DADOS FANTASIA ---
+  const listaDeVagas = [
+    {
+      id: 1,
+      titulo: "Desenvolvedor Front-end Jr",
+      data: "27/11/2025 14:30",
+      empresa: "Tech Solutions BA",
+      tags: ["React", "CSS", "JavaScript", "Figma"]
+    },
+    {
+      id: 2,
+      titulo: "Analista de Suporte TI",
+      data: "26/11/2025 09:00",
+      empresa: "Rede Conecta",
+      tags: ["Hardware", "Redes", "Windows", "Atendimento"]
+    },
+    {
+      id: 3,
+      titulo: "Estágio em Dados",
+      data: "25/11/2025 16:45",
+      empresa: "DataCorp Feira",
+      tags: ["SQL", "Excel", "PowerBI", "Python"]
+    },
+    {
+      id: 4,
+      titulo: "Dev Back-end Java",
+      data: "24/11/2025 11:20",
+      empresa: "Sistema Forte LTDA",
+      tags: ["Java", "Spring Boot", "API REST", "Docker"]
+    }
+  ];
+
   return (
     <div className="vagas-container">
-      
-      {/* Passamos a função de abrir para a Navbar */}
       <Navbar onOpenProfile={handleOpenSidebar} />
-
-      {/* Componente Sidebar (fica "escondido" até o estado mudar) */}
       <Sidebar isOpen={isSidebarOpen} onClose={handleCloseSidebar} />
+
       <main className="vagas-main">
         
-        {/* --- SEÇÃO DE BUSCA E FILTROS --- */}
+        {/* --- SEÇÃO DE BUSCA (Mantive igual) --- */}
         <div className="search-section">
-          
-          {/* Linha de Busca */}
           <div className="search-row">
             <label className="input-label">Buscar:</label>
             <div className="search-wrapper">
-              <input 
-                type="text" 
-                className="search-input"
-              />
+              <input type="text" className="search-input" />
               <Search size={20} className="search-icon" />
             </div>
           </div>
 
-          {/* Linha de Filtros e Botões */}
           <div className="filters-row">
-            
-            {/* Select Empresa */}
             <div className="filter-group">
               <label className="input-label">Empresa:</label>
               <select className="filter-select">
                 <option value="">Selecione...</option>
-                <option value="pipipi">Pipipi Popo LTDA</option>
+                <option value="tech">Tech Solutions</option>
+                <option value="rede">Rede Conecta</option>
               </select>
             </div>
 
-            {/* Select Competência */}
             <div className="filter-group">
               <label className="input-label">Competência:</label>
               <select className="filter-select">
                  <option value="">Selecione...</option>
-                 <option value="react">React</option>
-                 <option value="java">Java</option>
+                 <option value="dev">Desenvolvimento</option>
+                 <option value="sup">Suporte</option>
               </select>
             </div>
 
-            {/* Botões de Ação */}
             <div className="actions-group">
               <button className="btn btn-filter">
                 <Filter size={18} /> Filtrar
               </button>
-
               <button className="btn btn-clear">
                  <Trash2 size={18} /> Limpar
               </button>
             </div>
-
           </div>
         </div>
 
-        {/* --- GRID DE VAGAS --- */}
+        {/* --- GRID DE VAGAS DINÂMICO --- */}
         <div className="cards-grid">
-          {/* Gerando 12 cards para visualização */}
-          {Array.from({ length: 12 }).map((_, index) => (
-            <JobCard key={index} />
+          
+          {/* Aqui fazemos o loop nos dados fantasia */}
+          {listaDeVagas.map((vaga) => (
+            <JobCard 
+              key={vaga.id}
+              titulo={vaga.titulo}
+              data={vaga.data}
+              empresa={vaga.empresa}
+              tags={vaga.tags}
+            />
           ))}
+
         </div>
 
       </main>
     </div>
-
-    
   );
 };
 

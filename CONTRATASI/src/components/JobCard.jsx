@@ -1,8 +1,8 @@
 import React from 'react';
-// Importando o CSS
 import './JobCard.css';
 
-const JobCard = () => {
+// Recebendo as props aqui dentro dos parênteses {}
+const JobCard = ({ titulo, empresa, data, tags }) => {
   return (
     <div className="job-card">
       
@@ -13,22 +13,22 @@ const JobCard = () => {
         
         {/* Cabeçalho */}
         <div className="card-header">
-          <h3 className="card-title">Titulo Vaga</h3>
-          <span className="card-date">16/04/2025 10:00</span>
+          <h3 className="card-title">{titulo}</h3>
+          <span className="card-date">{data}</span>
         </div>
 
         {/* Empresa */}
         <div className="card-body">
           <p className="company-text">
-            Empresa: <span className="company-name">Pipipi Popo LTDA</span>
+            Empresa: <span className="company-name">{empresa}</span>
           </p>
         </div>
 
-        {/* Tags (Grid 3 colunas) */}
+        {/* Tags (Dinâmicas) */}
         <div className="tags-grid">
-          {[1, 2, 3, 4, 5, 6].map((tag) => (
-            <span key={tag} className="tag">
-              TagVaga
+          {tags.map((tag, index) => (
+            <span key={index} className="tag">
+              {tag}
             </span>
           ))}
         </div>

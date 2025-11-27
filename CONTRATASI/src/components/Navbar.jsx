@@ -2,6 +2,7 @@ import React, { useState } from 'react'; // 1. Importe useState
 import { Bell, Search } from 'lucide-react';
 import './Navbar.css';
 import logoImg from "../assets/images/LogoB.png";
+import { Link } from 'react-router-dom';
 
 // 2. Importe o componente de notificações
 import NotificationPanel from './NotificationPanel';
@@ -14,10 +15,9 @@ const Navbar = ({ onOpenProfile }) => {
     <nav className="navbar-container">
       
       {/* Lado Esquerdo */}
-      <div className="nav-left">
+      <Link to="/vagas" className="nav-left">
         <img src={logoImg} alt="Logo ContrataSI" className="nav-logo" />
-        <span className="nav-title">ContrataSI</span>
-      </div>
+      </Link>
 
       {/* Lado Direito */}
       <div className="nav-right">
