@@ -54,11 +54,11 @@ const LoginPage = () => {
                             <div className='form-group'>
                                 <label htmlFor="login">Login *</label>
                                 <input
-                                    type="email"
+                                    type="login"
                                     id="login"
                                     placeholder="Username"
                                     value={login}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    onChange={(e) => setLogin(e.target.value)}
                                     required
                                 />
                                 <div className='form-group password-group'>
