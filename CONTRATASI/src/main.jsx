@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client'; // Importe o ReactDOM aqui
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'; // Importe o createBrowserRouter
-
 import './index.css';
 
 // Importe suas páginas
-import CadastroPage from './pages/CadastroPage.jsx'
+import CadastroPage from './pages/CadastroPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import MainPage from './pages/MainPage.jsx';
-// O import do App.jsx não é necessário aqui, pode remover se quiser
+import VagasPage from './pages/VagasPage.jsx';
+import InscricoesPage from './pages/InscricoesPage.jsx';
+
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,15 @@ const router = createBrowserRouter([
   {
     path: "/cadastro",
     element: <CadastroPage />,
-  }
+  },
+  {
+  path: "/vagas",
+  element: <VagasPage />,
+  },
+  {
+    path: "/inscricoes",
+    element: <InscricoesPage />,
+  },
 ]);
 
 // Use a variável ReactDOM que você importou

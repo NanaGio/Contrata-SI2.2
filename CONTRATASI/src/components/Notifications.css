@@ -1,0 +1,190 @@
+/* src/components/Notifications.css */
+
+:root {
+  --green-primary: #108f56;
+  --green-light-bg: #d1fae5;
+  --gray-bg: #e5e7eb;
+  --text-dark: #1f2937;
+  --text-gray: #4b5563;
+}
+
+.notification-container {
+  width: 100%;
+  max-width: 500px; /* Tamanho máximo do painel */
+  background: white;
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+/* --- ABAS (TABS) --- */
+.tabs-header {
+  display: flex;
+  background-color: var(--gray-bg);
+  border-radius: 8px;
+  padding: 4px;
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-gray);
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.tab-btn.active {
+  background-color: var(--green-primary);
+  color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.badge {
+  background-color: white;
+  color: var(--green-primary);
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: 18px;
+  text-align: center;
+}
+
+/* --- CARD DE NOTIFICAÇÃO --- */
+.notif-card {
+  background-color: #f3f4f6; /* Cinza bem claro */
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: flex-start; /* Alinha no topo */
+  gap: 15px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.icon-wrapper {
+  min-width: 24px;
+  margin-top: 2px;
+}
+
+.notif-content h4 {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+  color: var(--text-dark);
+  font-weight: 800;
+}
+
+.notif-content p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-gray);
+  line-height: 1.4;
+}
+
+.action-btn {
+  background: white; /* Ou transparente com borda */
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-gray);
+  position: absolute; /* Para ficar no topo direito */
+  top: 16px;
+  right: 16px;
+}
+
+.action-btn:hover {
+  border-color: var(--green-primary);
+  color: var(--green-primary);
+}
+
+/* --- PAGINAÇÃO --- */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.page-arrow {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+}
+
+.page-number {
+  background-color: var(--green-light-bg);
+  color: var(--green-primary);
+  border: 1px solid var(--green-primary);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+
+.notification-wrapper {
+  position: relative; 
+  display: flex;
+  align-items: center;
+}
+
+/* Área clicável do sino */
+.bell-trigger {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: var(--gray-icon);
+}
+
+.bell-trigger:hover {
+  color: var(--nav-green);
+}
+
+/* O Dropdown flutuante */
+.dropdown-container {
+  position: absolute;
+  top: 50px; /* Empurra para baixo do sino */
+  right: -80px; /* Ajuste horizontal (negativo puxa para a direita) */
+  width: 400px; /* Largura do painel */
+  z-index: 1000; /* Garante que fique por cima de tudo */
+  
+  /* Sombra forte para destacar que está flutuando */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15); 
+  border-radius: 12px;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+}
+
+/* Responsividade para celular: centraliza o dropdown */
+@media (max-width: 600px) {
+  .dropdown-container {
+    position: fixed; /* Fixa na tela */
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    right: auto;
+  }
+}

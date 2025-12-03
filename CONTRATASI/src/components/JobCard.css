@@ -1,0 +1,96 @@
+/* src/components/JobCard.css */
+
+.job-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra suave inicial */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  border: 1px solid #f0f0f0; /* Borda bem sutil */
+}
+
+.job-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px); /* Leve subida ao passar o mouse */
+}
+
+/* A barra lateral verde escuro */
+.card-strip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background-color: #1B4D3E; /* Cor exata da imagem */
+}
+
+.card-content {
+  padding: 20px;
+  padding-left: 28px; /* Espaço extra na esquerda por causa da barra */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* --- CABEÇALHO --- */
+.card-header {
+  margin-bottom: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 12px;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111827; /* Preto suave */
+  margin: 0 0 4px 0;
+  line-height: 1.2;
+}
+
+.card-date {
+  font-size: 0.85rem;
+  color: #6b7280; /* Cinza médio */
+  font-weight: 500;
+}
+
+/* --- CORPO (Empresa) --- */
+.card-body {
+  margin-bottom: 16px;
+  flex-grow: 1; /* Empurra as tags para baixo */
+}
+
+.company-text {
+  font-size: 0.95rem;
+  color: #374151;
+  margin: 0;
+}
+
+.company-name {
+  font-weight: 700;
+  color: #111827;
+}
+
+/* --- TAGS --- */
+.tags-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
+  gap: 8px;
+  margin-top: auto; /* Garante que fique no rodapé do card */
+}
+
+.tag {
+  background-color: #d1fae5; /* Verde bem claro (Emerald 100) */
+  color: #065f46; /* Verde escuro (Emerald 800) */
+  font-size: 0.75rem; /* Letra pequena */
+  font-weight: 700;
+  padding: 6px 4px;
+  border-radius: 6px;
+  text-align: center;
+  white-space: nowrap; /* Não quebra linha */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

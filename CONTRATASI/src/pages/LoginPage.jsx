@@ -1,9 +1,10 @@
-import './LoginPage.css';
-import logoPreto from '../assets/images/logoPreto.png';
-import backgroundClear from '../assets/images/backgroundClear.png';
-import { FiEye, FiEyeOff } from 'react-icons/fi';
-import React, { useState } from 'react';
 import axios from 'axios';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FiEye, FiEyeOff } from 'react-icons/fi';
+import backgroundClear from '../assets/images/backgroundClear.png';
+import logoPreto from '../assets/images/logoPreto.png';
+import './LoginPage.css';
 
 const LoginPage = () => {
     const [login, setLogin] = useState('');
@@ -48,7 +49,9 @@ const LoginPage = () => {
                     <div className='login'>
                         <img src={logoPreto}/>
                         <h2 className="login-title">Acessar conta</h2>
-                        <h3 className='cadastro'>Ou cadastre-se </h3>
+                        <Link to="/cadastro" className='cadastro'>
+                            Ou cadastre-se
+                        </Link>
                         <form onSubmit={handLoginSubmit} className="login-form">
 
                             <div className='form-group'>
