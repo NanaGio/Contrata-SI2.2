@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import backgroundClear from '../assets/images/backgroundClear.png';
@@ -7,6 +8,7 @@ import logoPreto from '../assets/images/logoPreto.png';
 import './LoginPage.css';
 
 const LoginPage = () => {
+    const navigate = useNavigate();
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [passwordShown, setPasswordShown] = useState(false);
@@ -79,7 +81,7 @@ const LoginPage = () => {
                                 </span>
                             </div>
                             </div>
-                            <button type='submit' className='login-button'>
+                            <button type='button' className='login-button' onClick={() => navigate('/Vagas')}>
                                 Entrar
                             </button>
                         </form>
