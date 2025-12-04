@@ -161,7 +161,7 @@ const Cadastro = () => {
             </div>
           )}
 
-          <button type="button" className="submit-btn" onClick={() => navigate('/Vagas')}>
+          <button type="button" className="submit-btn" onClick={() => navigate('/vagas')}>
             CADASTRAR
           </button>
         </form>
