@@ -2,9 +2,9 @@ import React from 'react';
 import './JobCard.css';
 
 // Recebendo as props aqui dentro dos parênteses {}
-const JobCard = ({ titulo, empresa, data, tags }) => {
+const JobCard = ({ titulo, empresa, data, tags, onClick }) => {
   return (
-    <div className="job-card">
+    <div className="job-card" onClick={onClick}>
       
       {/* Barra lateral decorativa */}
       <div className="card-strip"></div>

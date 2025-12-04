@@ -26,7 +26,6 @@ const Cadastro = () => {
     setFormData({ ...formData, arquivo: e.target.files[0] });
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -41,13 +40,10 @@ const Cadastro = () => {
     };
 
     try {
-    
-        await axios.post('http://localhost:8080/api/usuarios', usuarioParaEnviar);
-        
+        await axios.post('http://127.0.0.1:8080/auth/novoUsuario', usuarioParaEnviar);
         setSuccess('Cadastro realizado com sucesso! Você já pode fazer o login.');
-        
         setFormData({ nome: '', email: '', telefone: '', senha: '', arquivo: null });
-
+        
         if (tipoConta === 'profissional' && formData.arquivo) {
             console.log("Próximo passo: Fazer upload do arquivo:", formData.arquivo.name);
         }
@@ -72,6 +68,7 @@ const Cadastro = () => {
             <h2>Criar conta</h2>
         </div>
 
+        {/* Toggle Profissional / Empresa */}
         <div className="toggle-container">
           <button
             type="button"
@@ -89,7 +86,11 @@ const Cadastro = () => {
           </button>
         </div>
 
-        {/* form */}
+        {/* Mensagens de Feedback */}
+        {error && <p style={{color: 'red', fontSize: '0.9rem', marginBottom: '15px'}}>{error}</p>}
+        {success && <p style={{color: 'green', fontSize: '0.9rem', marginBottom: '15px'}}>{success}</p>}
+
+        {/* Formulário */}
         <form onSubmit={handleSubmit} className="form-content">
           <div className="input-group">
             <label>Nome *</label>
@@ -142,7 +143,6 @@ const Cadastro = () => {
               </span>
             </div>
           </div>
-
     
           {tipoConta === 'profissional' && (
             <div className="file-group">

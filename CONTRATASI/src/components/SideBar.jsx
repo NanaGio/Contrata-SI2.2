@@ -2,6 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom'; // 1. Importe isso
 import { Phone, Mail, FileText, Download } from 'lucide-react';
 import './Sidebar.css';
+import { userData } from '../Data';
+
 
 const Sidebar = ({ isOpen, onClose }) => {
   const navigate = useNavigate(); // 2. Inicialize o hook
@@ -19,10 +21,10 @@ const Sidebar = ({ isOpen, onClose }) => {
         
         {/* Cabeçalho Perfil */}
         <div className="profile-header">
-          <div className="sidebar-avatar">P</div>
+          <div className="sidebar-avatar">{userData.iniciais}</div>
           <div className="profile-info">
-            <h2>Fulano da Silva Santos</h2>
-            <span>Profissional</span>
+            <h2>{userData.nome}</h2>
+            <span>{userData.tipo}</span>
           </div>
         </div>
 
@@ -32,11 +34,11 @@ const Sidebar = ({ isOpen, onClose }) => {
         <div className="contact-section">
           <div className="contact-item">
             <Phone size={20} className="text-gray-700" />
-            <span>(00) 0 0000-0000</span>
+            <span>{userData.telefone}</span>
           </div>
           <div className="contact-item">
             <Mail size={20} className="text-gray-700" />
-            <span>fulanodasilva@gmail.com</span>
+            <span>{userData.email}</span>
           </div>
         </div>
 
@@ -44,7 +46,7 @@ const Sidebar = ({ isOpen, onClose }) => {
         <div className="cv-box">
           <div className="cv-content">
             <FileText size={24} color="#dc2626" />
-            <span className="cv-name">Curriculum Vitae - Lorem I</span>
+            <span className="cv-name">{userData.curriculoNome}</span>
           </div>
           <Download size={20} className="cursor-pointer text-gray-600" />
         </div>

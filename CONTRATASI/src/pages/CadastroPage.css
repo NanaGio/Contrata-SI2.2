@@ -1,69 +1,78 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
-* {
-  box-sizing: border-box;
+/* --- RESET FORÇADO (Adicione isso para corrigir o problema do #root) --- */
+:root, body, #root {
+  height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: white;
+  background-color: #fcfcfc;
+  overflow-x: hidden; /* Evita rolagem lateral indesejada */
 }
 
+/* --- Container Principal --- */
 .container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
+  justify-content: center; /* Centraliza na horizontal (eixo X) */
+  align-items: center;     /* Centraliza na vertical (eixo Y) */
+  
+  width: 100vw;            /* Força a largura da janela inteira */
+  min-height: 100vh;       /* Força a altura da janela inteira */
+  
+  padding: 20px;           /* Espaço seguro para telas pequenas */
+  box-sizing: border-box;  /* Garante que o padding não estoure a tela */
 }
 
+/* --- O Card do Formulário --- */
 .card {
   background: white;
   padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+  
   width: 100%;
   max-width: 450px;
+  
   text-align: center;
-  margin-left: 500px;
+  position: relative; /* Garante que z-index e posicionamentos funcionem */
+}
+
+/* --- Header e Logo --- */
+.header {
+  margin-bottom: 25px;
 }
 
 .logo-container {
   display: flex;
-  justify-content: center; 
-  align-items: center;
-  margin-bottom: 10px; 
-  width: 100%;
+  justify-content: center;
+  margin-bottom: 15px;
 }
 
 .logo-img {
-  width: 180px; 
+  width: 160px;
   height: auto;
   object-fit: contain;
 }
 
-.header h1 {
-  font-size: 1.8rem;
-  color: #000;
-  font-weight: 700;
-  margin-bottom: 5px;
-}
-
 .header h2 {
-  font-size: 1.2rem;
-  color: #444;
-  margin-bottom: 25px;
-  font-weight: 600;
+  font-size: 1.5rem;
+  color: #2c3e50;
+  font-weight: 700;
+  margin: 0;
 }
 
+/* --- Botões de Alternância (Toggle) --- */
 .toggle-container {
   display: flex;
-  background-color: #dcdcdc;
-  border-radius: 8px;
-  margin-bottom: 30px;
-  padding: 0;
+  background-color: #e0e0e0;
+  border-radius: 6px;
+  margin-bottom: 25px;
+  padding: 4px;
 }
 
 .toggle-btn {
@@ -73,6 +82,7 @@ body {
   outline: none;
   cursor: pointer;
   font-weight: 600;
+  font-size: 0.9rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,14 +90,16 @@ body {
   font-family: inherit;
   color: #555;
   background-color: transparent;
+  border-radius: 4px;
 }
 
 .toggle-btn.active {
   background-color: #109159;
   color: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* --- Inputs --- */
 .form-content {
   text-align: left;
 }
@@ -99,61 +111,61 @@ body {
 .input-group label {
   display: block;
   font-size: 0.85rem;
-  font-weight: 600;
-  margin-bottom: 5px;
+  font-weight: 700;
+  margin-bottom: 6px;
   color: #333;
 }
 
 .input-group input {
   width: 100%;
-  padding: 10px 15px;
+  padding: 12px 15px;
   border: 1px solid #109159;
-  border-radius: 20px;
+  border-radius: 8px;
   outline: none;
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #333;
+  transition: box-shadow 0.2s, border-color 0.2s;
 }
 
 .input-group input:focus {
-  box-shadow: 0 0 0 2px rgba(16, 145, 89, 0.2);
+  box-shadow: 0 0 0 3px rgba(16, 145, 89, 0.15);
+  border-color: #0c7044;
 }
 
+/* --- Senha e Ícone --- */
 .password-wrapper {
-  position: relative; 
+  position: relative;
   width: 100%;
-  display: flex;   
-  align-items: center;
 }
 
 .eye-icon {
   position: absolute;
-  right: 15px;       
-  
-  top: 60%;           
-  transform: translateY(-50%); 
-  
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
   cursor: pointer;
-  color: #666;       
-  display: flex;      
+  color: #888;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;  
-  z-index: 10;       
+  padding: 5px; /* Aumenta área de clique */
 }
 
+/* --- Upload de Arquivo --- */
 .file-group {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   margin-bottom: 25px;
   font-size: 0.85rem;
+  margin-top: 10px;
 }
 
 .file-group label:first-child {
   margin-right: 10px;
   font-weight: 600;
   font-style: italic;
-  color: #333;
+  color: #444;
 }
 
 input[type="file"] {
@@ -161,14 +173,16 @@ input[type="file"] {
 }
 
 .custom-file-upload {
-  border: 1px solid #109159;
   background-color: #d4f0e3;
-  color: #555;
-  padding: 5px 15px;
+  color: #0d5f3a;
+  padding: 6px 15px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 0.8rem;
+  border: 1px solid #bcead4;
   transition: background 0.2s;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .custom-file-upload:hover {
@@ -177,13 +191,20 @@ input[type="file"] {
 
 .file-name {
   margin-left: 10px;
-  font-size: 0.8rem;
-  color: #666;
+  font-size: 0.75rem;
+  color: #109159;
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  vertical-align: middle;
 }
 
+/* --- Botão Cadastrar --- */
 .submit-btn {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   background-color: #109159;
   color: white;
   border: none;
@@ -191,10 +212,14 @@ input[type="file"] {
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.1s;
   text-transform: uppercase;
 }
 
 .submit-btn:hover {
   background-color: #0c7044;
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
 }
