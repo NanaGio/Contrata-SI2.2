@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaUser, FaBuilding, FaEye, FaEyeSlash } from 'react-icons/fa';
 import './CadastroPage.css';
 import logoPreto from '../assets/images/logoPreto.png';
 import axios from 'axios'; 
 
 const Cadastro = () => {
+  const navigate = useNavigate();
   const [tipoConta, setTipoConta] = useState('profissional'); 
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const [formData, setFormData] = useState({
@@ -159,7 +161,7 @@ const Cadastro = () => {
             </div>
           )}
 
-          <button type="submit" className="submit-btn">
+          <button type="button" className="submit-btn" onClick={() => navigate('/Vagas')}>
             CADASTRAR
           </button>
         </form>

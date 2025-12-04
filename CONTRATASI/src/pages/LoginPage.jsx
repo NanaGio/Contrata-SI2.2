@@ -9,6 +9,7 @@ import './LoginPage.css';
 
 
 const LoginPage = () => {
+    const navigate = useNavigate();
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [passwordShown, setPasswordShown] = useState(false);
@@ -80,9 +81,24 @@ const defaultPassword = "123456";
                             />
                         </div>
 
+<<<<<<< HEAD
                         <div className='form-group'>
                             <label htmlFor="password">Senha *</label>
                             <div className="password-input-container">
+=======
+                            <div className='form-group'>
+                                <label htmlFor="login">Login *</label>
+                                <input
+                                    type="login"
+                                    id="login"
+                                    placeholder="Username"
+                                    value={login}
+                                    onChange={(e) => setLogin(e.target.value)}
+                                    required
+                                />
+                                <div className='form-group password-group'>
+                                <label htmlFor="password">Senha *</label>
+>>>>>>> 9d33f45f10159799bb717ed7859c9d5ad68962b5
                                 <input
                                     type={passwordShown ? "text" : "password"}
                                     id="password"
@@ -94,6 +110,7 @@ const defaultPassword = "123456";
                                     {passwordShown ? <FiEyeOff /> : <FiEye />}
                                 </span>
                             </div>
+<<<<<<< HEAD
                         </div>
 
                         {/* Links de ajuda (Cadastre-se e Esqueceu Senha) */}
@@ -109,6 +126,14 @@ const defaultPassword = "123456";
                             ENTRAR
                         </button>
                     </form>
+=======
+                            </div>
+                            <button type='button' className='login-button' onClick={() => navigate('/Vagas')}>
+                                Entrar
+                            </button>
+                        </form>
+                    </div>
+>>>>>>> 9d33f45f10159799bb717ed7859c9d5ad68962b5
                 </div>
             </div>
 
